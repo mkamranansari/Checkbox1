@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>1</title>
+	<style>
+		label{
+			position: relative;
+			font-family: 'Segoe UI';
+			font-size: 18pt;
+		}
+		.chinput{
+			display:none;
+		}
+		.box{
+			position: absolute;
+			top: 50%; left: 6px; transform: translateY(-50%);
+			height: 80%; width: 1.1em; /* depends on font */
+			border: 2px solid #a5a5a5;
+		}
+		.checks{
+			position: absolute;
+			width: 100%; height: 100%; top: 0%; left: 0%;
+			transform: rotateZ(-45deg)
+		}
+		.chkp1{
+			background-color: #9e0028;
+			position: absolute;
+			top: 14%;
+			width: 17%;
+			backface-visibility: hidden;
+		}
+		.chkp2{
+			background-color: #9e0028;
+			position: absolute;
+			top:50%; transform: translateY(-50%);
+			backface-visibility: hidden;
+			height: 20%;
+		}
+		.chinput + .box .checks .chkp1{
+			opacity: 1;
+			height: 0;
+			animation: check1out 0.3s 0.08s ease;
+			animation-fill-mode: backwards;
+		}
+		.chinput + .box .checks .chkp2{
+			opacity: 1;
+			width: 0;
+			animation: check2out 0.2s ease;
+			animation-fill-mode: backwards;
+		}
+		.chinput:checked + .box .checks .chkp1{
+			/* opacity: 1; */
+			height: 0.35em;
+			animation: check1in 0.2s ease;
+			animation-fill-mode: backwards;
+		}
+		.chinput:checked + .box .checks .chkp2{
+			/* opacity: 1; */
+			width: 1.35em;
+			animation: check2in 0.3s 0.1s ease;
+			animation-fill-mode: backwards;
+		}
+		@keyframes check1in{
+			0%{ opacity: 1; height: 0; }
+			100%{ opacity: 1; height: 0.35em; }
+		}
+		@keyframes check1out{
+			0%{ opacity: 1; height: 0.35em; }
+			100%{ opacity: 0; height: 0;}
+		}
+		@keyframes check2in{
+			0%{ opacity: 1; width: 0;}
+			100%{ opacity: 1; width: 1.35em;}
+		}
+		@keyframes check2out{
+			0%{ opacity: 1; width: 1.35em;}
+			100%{ opacity: 0; width: 0; }
+		}
+		.text{
+			margin-left: 1.6em;
+		}
+	</style>
+</head>
+<body>
+	<label>
+		<input type="checkbox" name="inchk" id="" class="chinput">
+		<span class="box">
+			<span class="checks">
+				<span class="chkp1"></span>
+				<span class="chkp2"></span>
+			</span>
+		</span>
+		<span class="text">Checkbox</span>
+	</label>
+</body>
+</html>
